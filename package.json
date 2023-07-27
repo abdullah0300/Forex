@@ -1,0 +1,11 @@
+{
+  "name": "forex-app",
+  "version": "1.0.0",
+  "description": "An online landing page for a forex trading consultant agency.",
+  "source": "index.html",
+  "authors": "Hanzla Saadi, Abdullah Aslam",
+  "license": "ISC",
+  "dependencies": {
+    "lightweight-charts": "^4.0.1"
+  }
+}
