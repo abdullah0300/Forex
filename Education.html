@@ -79,7 +79,7 @@
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="box">
               <h3>Basic</h3>
-              <h4><sup>$</sup>150<span> Duration Month</span></h4>
+              <h4><sup>$</sup><del style="color: red;">150</del> 50<span> Duration Month</span></h4>
               <ul>
                 <li><i class="bx bx-check"></i> What is Forex Trading and types of Trends</li>
                 <li><i class="bx bx-check"></i> How to create practice Account?</li>
@@ -104,7 +104,7 @@
           <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
             <div class="box featured">
               <h3>Advance</h3>
-              <h4><sup>$</sup>150<span>Duration Month</span></h4>
+              <h4><sup>$</sup><del style="color: red;">150</del> 50<span> Duration Month</span></h4>
               <ul>
                 <li><i class="bx bx-check"></i> What is Price Action?
                 </li>
@@ -133,7 +133,7 @@
             <div class="box">
               <h3>Advance Pro
               </h3>
-              <h4><sup>$</sup>150<span>Duration Month</span></h4>
+              <h4><sup>$</sup><del style="color: red;">150</del> 50<span> Duration Month</span></h4>
               <ul>
                 <li><i class="bx bx-check"></i> Stucture of Market & Trendline Basics</li>
                 <li><i class="bx bx-check"></i> Powerful Candlestick Patterns Part - 1</li>
@@ -166,7 +166,7 @@
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
             <div class="box">
               <h3>Supply & Demand</h3>
-              <h4><sup>$</sup>150<span> Duration Month</span></h4>
+              <h4><sup>$</sup><del style="color: red;">150</del> 50<span> Duration Month</span></h4>
               <ul>
                 <li><i class="bx bx-check"></i> Introduction of Supply & Demand</li>
                 <li><i class="bx bx-check"></i> Demand Patterns
@@ -192,7 +192,7 @@
           <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
             <div class="box featured">
               <h3>Divergence</h3>
-              <h4><sup>$</sup>150<span>Duration Month</span></h4>
+              <h4><sup>$</sup><del style="color: red;">150</del> 50<span> Duration Month</span></h4>
               <ul>
                 <li><i class="bx bx-check"></i> What is Price Action?
                 </li>
@@ -213,7 +213,7 @@
             <div class="box">
               <h3>Trading Room
               </h3>
-              <h4><sup>$</sup>200<span>Duration Month</span></h4>
+              <h4><sup>$</sup><del style="color: red;">200</del> 100<span> Duration Month</span></h4>
               <ul>
                 <li><i class="bx bx-check"></i> Daily Signals</li>
                 <li><i class="bx bx-check"></i> Daily Analysis
@@ -232,7 +232,7 @@
                 <li><i class="bx bx-check"></i> Entry Types and Boosters For Entries</li>
                 <li><i class="bx bx-check"></i> Identifying the High Liquidity Zone For Entry</li>
               </ul>
-              <a href="#" class="buy-btn">Get Started</a>
+              <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">Get Started</a>
             </div>
           </div>
 
@@ -267,6 +267,30 @@
       </div>
     </div>
 
+
+    <!-- ---------------modal 2 -->
+
+
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel1" style="color: black;"> Payment</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div id="paypal-button-container1"></div>
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 
@@ -357,7 +381,7 @@
       return actions.order.create({
         purchase_units: [{
           amount: {
-            value: '150.00' // Set your amount here
+            value: '50.00' // Set your amount here
           }
         }]
       });
@@ -370,6 +394,28 @@
       });
     }
   }).render('#paypal-button-container'); // Render the button in the container
+</script>
+<script>
+  // PayPal SDK script has loaded, set up the button
+  paypal.Buttons({
+    createOrder: function (data, actions) {
+      // Set up the transaction
+      return actions.order.create({
+        purchase_units: [{
+          amount: {
+            value: '100.00' // Set your amount here
+          }
+        }]
+      });
+    },
+    onApprove: function (data, actions) {
+      // Capture the funds from the transaction
+      return actions.order.capture().then(function (details) {
+        // Handle the successful payment (e.g., show a thank you message)
+        alert('Transaction completed by ' + details.payer.name.given_name);
+      });
+    }
+  }).render('#paypal-button-container1'); // Render the button in the container
 </script>
 
 </html>
